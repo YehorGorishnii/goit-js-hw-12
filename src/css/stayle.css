@@ -1,0 +1,125 @@
+@import url(./reset.css);
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 30px;
+}
+
+.form-input {
+    width: 272px;
+    height: 40px;
+    padding: 0;
+    border-radius: 4px;
+    border: 1px solid #808080;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.04em;
+    text-align: left;
+    padding-left: 16px;
+
+    box-sizing: border-box;
+}
+
+.form-input:active {
+    outline: none;
+    border-color: #4E75FF;
+
+}
+
+.submit-btn {
+    width: 75px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: #4E75FF;
+    color: #FFFFFF;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.04em;
+    border: #4E75FF;
+
+}
+
+.submit-btn:hover,
+.submit-btn:focus {
+    background-color: #6C8CFF;
+    border: #6C8CFF;
+}
+
+.gallery {
+    display: flex;
+    list-style-type: none;
+    flex-wrap: wrap;
+    flex-direction: row;
+    column-gap: 24px;
+    row-gap: 28px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.gallery-info {
+    border: solid #808080;
+    border-top: 0px;
+    border-width: 1px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+.gallery-info-span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+
+.loader {
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.04em;
+    color: #2E2F42;
+    box-sizing: border-box;
+    justify-content: center;
+    margin-top: 32px;
+}
+
+
+.load-more {
+    display: none;
+    width: 125px;
+    height: 40px;
+    border-radius: 8px;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.04em;
+    color: #FFFFFF;
+    border-color: #4E75FF;
+    background-color: #4E75FF;
+    margin-top: 32px;
+}
+
+.load-more:hover {
+    border-color: #6C8CFF;
+    background-color: #6C8CFF;
+}
