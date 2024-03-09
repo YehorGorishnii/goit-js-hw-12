@@ -5,7 +5,7 @@ import 'izitoast/dist/css/iziToast.min.css';
 const KEY = '42701806-8f4bc33de61eec272077c73af';
 const URL = 'https://pixabay.com/api/';
 
-// axios.defaults.baseURL = URL;
+// 
 
 const loader = document.querySelector('.loader');
 
