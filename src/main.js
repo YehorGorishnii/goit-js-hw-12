@@ -43,8 +43,8 @@ async function processSearch(event) {
     setTimeout(() => (loader.style.display = 'none'), 1000);
     return;
   }
-  loader.style.display = 'none',
-    loadMoreBtn.style.display = 'block',
+  (loader.style.display = 'none'),
+    (loadMoreBtn.style.display = 'block'),
     findImage(QUERY, 15, 1)
       .then(arr => {
         totalHits = arr.totalHits;
@@ -75,11 +75,13 @@ loadMoreBtn.addEventListener('click', event => {
         console.error('Error:', error);
       });
   } else {
+    loader.style.display = 'none';
+    loadMoreBtn.style.display = 'none';
     iziToast.show({
       title: 'Info',
       timeout: 2000,
       color: 'blue',
-      position: 'bottomRight',
+      position: 'topRight',
       message: "We're sorry, but you've reached the end of search results.",
     });
   }
