@@ -32,7 +32,7 @@ async function processSearch(event) {
   const QUERY = FORM.elements.query.value.trim();
 
   if (QUERY === '') {
-    loadMoreBtn.style.display = 'none';
+    
     iziToast.error({
       message:
         'Sorry, there are no images matching your search query. Please try again!',
@@ -40,14 +40,15 @@ async function processSearch(event) {
       timeout: 2000,
       position: 'topRight',
     });
+    loadMoreBtn.style.display = 'none';
 
     setTimeout(() => (loader.style.display = 'none'), 1000);
     return;
   }
-  (loader.style.display = 'none'),
-    (loadMoreBtn.style.display = 'block'),
+    loadMoreBtn.style.display = 'block',
     findImage(QUERY, 15, 1)
       .then(arr => {
+        loader.style.display = 'none';
         totalHits = arr.totalHits;
         currentQuery = QUERY;
         currentPage = 1;
