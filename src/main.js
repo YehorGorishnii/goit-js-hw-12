@@ -32,7 +32,7 @@ async function processSearch(event) {
   const QUERY = FORM.elements.query.value.trim();
 
   if (QUERY === '') {
-    loadMoreBtn.style.display = 'none'
+    loadMoreBtn.style.display = 'none';
     iziToast.error({
       message:
         'Sorry, there are no images matching your search query. Please try again!',
