@@ -12,6 +12,7 @@ const gallery = document.querySelector('.gallery');
 const loader = document.querySelector('.loader');
 const loadMoreBtn = document.querySelector('.load-more');
 
+
 let galleryLightbox = new SimpleLightbox('.gallery div ', {
   captionsData: 'alt',
   captionDelay: 250,
@@ -23,9 +24,10 @@ let totalHits;
 
 FORM.addEventListener('submit', processSearch);
 
+
+
 async function processSearch(event) {
   event.preventDefault();
-  loader.style.display = 'block';
   gallery.innerHTML = null;
 
   const FORM = event.currentTarget;
@@ -40,16 +42,23 @@ async function processSearch(event) {
       timeout: 2000,
       position: 'topRight',
     });
-    loadMoreBtn.style.display = 'none';
-
-    setTimeout(() => (loader.style.display = 'none'), 1000);
+    show(loader)
+    hidden(loadMoreBtn)
+    setTimeout(() => (loader.style.display = 'none'), 1000)
     return;
+  
   }
-    loadMoreBtn.style.display = 'block',
+  show(loader)
     findImage(QUERY, 15, 1)
       .then(arr => {
-        loader.style.display = 'none';
-        totalHits = arr.totalHits;
+        hidden(loader)
+        show(loadMoreBtn)
+        if (arr && arr.totalHits) {
+          totalHits = arr.totalHits;
+        } else {
+          totalHits = 0;
+          hidden(loadMoreBtn)
+        }
         currentQuery = QUERY;
         currentPage = 1;
         gallery.innerHTML = createGallery(arr);
@@ -60,25 +69,23 @@ async function processSearch(event) {
         console.error('Error:', error);
       });
 }
-
-loadMoreBtn.addEventListener('click', event => {
+loadMoreBtn.addEventListener('click', async () => {
   currentPage++;
-  loader.style.display = 'block';
   if (currentPage * 15 < totalHits) {
+    show(loader)
     findImage(currentQuery, 15, currentPage)
       .then(arr => {
+        hidden(loader)
         gallery.insertAdjacentHTML('beforeend', createGallery(arr));
         FORM.reset();
         galleryLightbox.refresh();
         smootScroll();
-        loader.style.display = 'none';
       })
       .catch(error => {
         console.error('Error:', error);
       });
   } else {
-    loader.style.display = 'none';
-    loadMoreBtn.style.display = 'none';
+    hidden(loadMoreBtn);
     iziToast.show({
       title: 'Info',
       timeout: 2000,
@@ -89,6 +96,8 @@ loadMoreBtn.addEventListener('click', event => {
   }
 });
 
+
+
 function smootScroll() {
   const galleryHeight =
     gallery.firstElementChild.getBoundingClientRect().height;
@@ -98,3 +107,12 @@ function smootScroll() {
     behavior: 'smooth',
   });
 }
+
+function show(element) {
+  return element.style.display = 'block';
+}
+
+ function hidden(element) {
+  return  element.style.display = 'none'
+}
+
