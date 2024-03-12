@@ -28,4 +28,3 @@ export async function findImage(QUERY, perPage, page) {
     console.error(`Error: ${error}`);
   }
 }
-
